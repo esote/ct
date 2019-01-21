@@ -1,0 +1,66 @@
+function Circle(name, color_from, color_to, complete, total, statement) {
+	var fsize = '1.5rem';
+	complete = parseFloat(complete);
+	total = parseFloat(total);
+	var text_color = ((complete > total) ? '#b39800' : '#000000');
+	var bar_pgress = new ProgressBar.Circle(name, {
+		color: text_color,
+		strokeWidth: 6,
+		trailWidth: 3,
+		easing: 'easeInOut',
+		duration: 2800,
+		text: {
+			value: complete + ' / ' + total + ' ' + statement
+		},
+		from: { color: color_from, width: 3 },
+		to: { color: color_to, width: 6 },
+		step: function(state, circle) {
+			circle.path.setAttribute('stroke', state.color);
+			circle.path.setAttribute('stroke-width', state.width);
+		}
+	});
+
+	bar_pgress.text.style.fontSize = fsize;
+
+	if(complete > total) {
+		bar_pgress.text.style.fontWeight = '700';
+		complete = total;
+	}
+
+	bar_pgress.animate(parseFloat(complete) / parseFloat(total));
+}
+
+function Bar(name, color, complete, total) {
+	complete = parseFloat(complete);
+	total = parseFloat(total);
+	var text_color = ((complete > total) ? '#b39800' : '#000000');
+	var bar_pgress = new ProgressBar.Line(name, {
+		strokeWidth: 6,
+		easing: 'easeInOut',
+		duration: 1400,
+		color: color,
+		trailColor: '#eee',
+		trailWidth: 2,
+		svgStyle: {width: '100%', height: '100%'},
+		text: {
+			style: {
+				color: text_color,
+				position: 'absolute',
+				right: '45%',
+				top: '30px',
+				padding: 0,
+				margin: 0,
+				transform: null
+			},
+			value: complete + ' / ' + total + ' [' + Math.floor(parseFloat(complete) / parseFloat(total) * 100) + '%]'
+		}
+	});
+
+	if(complete > total) {
+		bar_pgress.text.style.fontWeight = '700';
+		complete = total;
+	}
+
+	bar_pgress.animate(parseFloat(complete) / parseFloat(total));
+}
+

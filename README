@@ -1,0 +1,9 @@
+Course Tracker.
+
+An old HS project. Real domain swapped to "example.com" and other info removed.
+
+Includes:
+	PHP source code
+	DB-recreation SQL script
+	Miscellaneous management shell scripts
+	Trimmed HTTPD, MariaDB, PHP, and SSHD config files

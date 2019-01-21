@@ -1,0 +1,32 @@
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+SyslogFacility AUTHPRIV
+
+Protocol 2
+
+PermitRootLogin without-password
+StrictModes yes
+MaxAuthTries 6
+
+PubkeyAuthentication yes
+
+AuthorizedKeysFile .ssh/authorized_keys
+
+IgnoreRhosts yes
+
+PermitEmptyPasswords no
+PasswordAuthentication no
+
+ChallengeResponseAuthentication no
+
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+
+UsePAM yes
+
+X11Forwarding no
+
+UseDNS yes
+
+Match User root
+	MaxSessions 1

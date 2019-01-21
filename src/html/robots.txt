@@ -1,0 +1,6 @@
+# Only allow index / home page
+
+User-Agent: *
+Allow: /$
+Disallow: /
+
